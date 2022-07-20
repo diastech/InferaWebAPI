@@ -1,4 +1,6 @@
 using Infera_WebApi.Context;
+using Infera_WebApi.Repositories.Role;
+using Infera_WebApi.Repositories.User;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,7 +9,12 @@ IConfiguration config = builder.Configuration;
 // Add services to the container.
 builder.Services.AddDbContext<SqlServerDbContext>(opt =>
     opt.UseSqlServer(config.GetConnectionString("SqlServerConnection")));
+
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+
 builder.Services.AddControllers();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
