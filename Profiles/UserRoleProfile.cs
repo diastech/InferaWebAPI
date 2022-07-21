@@ -10,10 +10,12 @@ namespace Infera_WebApi.Profiles
         public UserRoleProfile()
         {
             CreateMap<UserRole, UserRoleReadDto>()
-                .ForMember(urr => urr.RoleReadDto, opt => opt.MapFrom(ur => ur.Role))
-                .ForMember(urr => urr.UserReadDto, opt => opt.MapFrom(ur => ur.User));
+                .ForMember(urr => urr.Role, opt => opt.MapFrom(ur => ur.Role))
+                .ForMember(urr => urr.User, opt => opt.MapFrom(ur => ur.User));
             CreateMap<UserRolePostRequest, UserRole>();
             CreateMap<UserRole, UserRoleUpdateRequest>();
+            CreateMap<UserRole, UserRoleForRoleDto>();
+            CreateMap<UserRole, UserRoleForUserDto>();
         }
     }
 }

@@ -9,9 +9,14 @@ namespace Infera_WebApi.Profiles
     {
         public RoleProfile()
         {
-            CreateMap<Role, RoleReadDto>();
+            CreateMap<Role, RoleReadDto>()
+                .ForMember(rr => rr.Users, opt => opt.MapFrom(r => r.Users));
             CreateMap<RolePostRequest, Role>();
             CreateMap<Role, RoleUpdateRequest>();
+            CreateMap<Role, RoleForUserRoleDto>()
+                .ForMember(rfur => rfur.Id, opt => opt.MapFrom(r => r.Id))
+                .ForMember(rfur => rfur.Name, opt => opt.MapFrom(r => r.Name))
+                .ForMember(rfur => rfur.Description, opt => opt.MapFrom(r => r.Description));
 
         }
     }

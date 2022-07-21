@@ -35,7 +35,7 @@ namespace Infera_WebApi.Repositories.User
 
             foreach (string relation in userGetAllRequest.Include)
             {
-                if (relation == "Role") users = users.Include(u=>u.UserRoles).ThenInclude(ur=>ur.Role);
+                if (relation == "Role") users = users.Include(u=>u.Roles).ThenInclude(ur=>ur.Role);
             }
 
             userGetAllRequest.TotalRecords=users.Count();

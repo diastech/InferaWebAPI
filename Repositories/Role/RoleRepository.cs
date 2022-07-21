@@ -25,6 +25,11 @@ namespace Infera_WebApi.Repositories.Role
                 roles = roles.Where(x => x.Name == roleGetAllRequest.Name);
             if(roleGetAllRequest.Description!= null)
                 roles=roles.Where(x => x.Description == roleGetAllRequest.Description);
+            
+            foreach (string relation in roleGetAllRequest.Include)
+            {
+                if (relation == "User") roles = roles.Include(u => u.Users).ThenInclude(ur => ur.User);
+            }
 
             roleGetAllRequest.TotalRecords=roles.Count();
 

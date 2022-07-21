@@ -21,10 +21,10 @@ namespace Infera_WebApi.Context
 
             //modelBuilder.Entity<UserRole>().HasKey(ur => new { ur.UserId, ur.RoleId });
 
-            modelBuilder.Entity<UserRole>().HasOne(ur => ur.User).WithMany(u => u.UserRoles)
+            modelBuilder.Entity<UserRole>().HasOne(ur => ur.User).WithMany(u => u.Roles)
                 .HasForeignKey(u => u.UserId);
 
-            modelBuilder.Entity<UserRole>().HasOne(ur => ur.Role).WithMany(r => r.UserRoles)
+            modelBuilder.Entity<UserRole>().HasOne(ur => ur.Role).WithMany(r => r.Users)
                 .HasForeignKey(u => u.RoleId);
 
             #endregion

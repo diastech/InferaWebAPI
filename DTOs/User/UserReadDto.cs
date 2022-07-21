@@ -9,6 +9,7 @@ namespace Infera_WebApi.DTOs.User
         public String Surname { get; set; }
         public String Email { get; set; }
         public DateTime CreatedAt { get; set; }
-        public ICollection<UserRoleReadDto> UserRoles { get; set; }
+
+        public ICollection<UserRoleForUserDto> Roles { get; set; }
     }
 }
