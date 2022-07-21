@@ -33,6 +33,11 @@ namespace Infera_WebApi.Repositories.User
             if (userGetAllRequest.Surname != null)
                 users = users.Where(x => x.Surname.StartsWith(userGetAllRequest.Surname.Trim()));
 
+            foreach (string relation in userGetAllRequest.Include)
+            {
+                if (relation == "Role") users = users.Include(u=>u.UserRoles).ThenInclude(ur=>ur.Role);
+            }
+
             userGetAllRequest.TotalRecords=users.Count();
 
             int Offset = (userGetAllRequest.PageNumber - 1) * userGetAllRequest.PageSize;

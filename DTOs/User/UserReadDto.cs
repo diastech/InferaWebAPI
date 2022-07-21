@@ -1,4 +1,6 @@
-﻿namespace Infera_WebApi.DTOs.User
+﻿using Infera_WebApi.DTOs.UserRole;
+
+namespace Infera_WebApi.DTOs.User
 {
     public class UserReadDto
     {
@@ -7,5 +9,6 @@
         public String Surname { get; set; }
         public String Email { get; set; }
         public DateTime CreatedAt { get; set; }
+        public ICollection<UserRoleReadDto> UserRoles { get; set; }
     }
 }
