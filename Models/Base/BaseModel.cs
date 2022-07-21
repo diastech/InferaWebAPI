@@ -4,6 +4,7 @@ namespace Infera_WebApi.Models.Base
 {
     public class BaseModel
     {
+        [Key]
         public int Id { get; set; }
         public DateTime CreatedAt { get; set; }=DateTime.Now;
         public int? CreatedBy { get; set; }

@@ -11,15 +11,28 @@ namespace Infera_WebApi.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            #region Users table
+            #region Users
             modelBuilder.Entity<User>()
                 .HasIndex(b => b.Email)
                 .IsUnique();
+            #endregion
+
+            #region UserRoles
+
+            //modelBuilder.Entity<UserRole>().HasKey(ur => new { ur.UserId, ur.RoleId });
+
+            modelBuilder.Entity<UserRole>().HasOne(ur => ur.User).WithMany(u => u.UserRoles)
+                .HasForeignKey(u => u.UserId);
+
+            modelBuilder.Entity<UserRole>().HasOne(ur => ur.Role).WithMany(r => r.UserRoles)
+                .HasForeignKey(u => u.RoleId);
+
             #endregion
 
         }
 
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
+        public DbSet<UserRole> UserRoles { get; set; }
     }
 }

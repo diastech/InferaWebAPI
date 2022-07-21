@@ -6,5 +6,7 @@ namespace Infera_WebApi.Models
     {
         public String Name { get; set; }
         public String Description { get; set; }
+
+        public ICollection<UserRole> UserRoles { get; set; }
     }
 }

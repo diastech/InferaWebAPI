@@ -11,6 +11,7 @@ namespace Infera_WebApi.Requests.Base
         [Min(1)]
         public int PageNumber { get; set; } = int.Parse(CustomConfig.AppSetting["Paging:DefaultPageNumber"]);
         public int TotalRecords { get; set; } = int.Parse(CustomConfig.AppSetting["Paging:DefaultTotalRecords"]);
+        public List<String>? Include { get; set; }=new List<String>();
 
     }
 }
