@@ -1,5 +1,6 @@
 using System.Text.Json.Serialization;
 using Infera_WebApi.Context;
+using Infera_WebApi.Repositories.Permission;
 using Infera_WebApi.Repositories.Role;
 using Infera_WebApi.Repositories.User;
 using Infera_WebApi.Repositories.UserRole;
@@ -15,6 +16,7 @@ builder.Services.AddDbContext<SqlServerDbContext>(opt =>
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 builder.Services.AddScoped<IUserRoleRepository, UserRoleRepository>();
+builder.Services.AddScoped<IPermissionRepository, PermissionRepository>();
 
 builder.Services.AddControllers()
     .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);

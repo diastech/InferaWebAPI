@@ -13,5 +13,17 @@ namespace Infera_WebApi.Requests.Base
         public int TotalRecords { get; set; } = int.Parse(CustomConfig.AppSetting["Paging:DefaultTotalRecords"]);
         public List<String>? Include { get; set; }=new List<String>();
 
+        public int GetOffset()
+        {
+            int offset = (PageNumber - 1) * PageSize;
+            if (offset > 0) return offset;
+            return 0;
+        }
+
+        public int GetLimit()
+        {
+            return PageSize;
+        }
+
     }
 }

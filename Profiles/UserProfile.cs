@@ -21,6 +21,7 @@ namespace Infera_WebApi.Profiles
                 .ForMember(ufur => ufur.Name, opt => opt.MapFrom(u => u.Name))
                 .ForMember(ufur => ufur.Surname, opt => opt.MapFrom(u => u.Surname))
                 .ForMember(ufur => ufur.Email, opt => opt.MapFrom(u => u.Email));
+            CreateMap<User, UserSimpleDto>();
         }
     }
 }
